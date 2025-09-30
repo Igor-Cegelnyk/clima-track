@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "clima-track"
+version = "1.1"
+description = ""
+authors = ["Ihor <il.cegelnik@gmail.com>"]
+readme = "README.md"
+
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.116.2"
+uvicorn = { version = ">=0.34.0,<0.35.0", extras = ["standart"] }
+sqlalchemy = { version = ">=2.0.38,<3.0.0", extras = ["asyncio"] }
+asyncpg = ">=0.30.0,<0.31.0"
+alembic = ">=1.14.1,<2.0.0"
+pydantic = "^2.11.9"
+pydantic-settings = "^2.10.1"
+orjson = "^3.11.3"
+httpx = { version = "^0.28.1", extras = ["http2"] }
+inflect = ">=7.5.0,<8.0.0"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^25.1.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
