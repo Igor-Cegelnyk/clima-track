@@ -3,7 +3,6 @@ import asyncio
 import httpx
 
 from app.config import settings
-from app.config.config import WeatherApiSettings
 
 
 class WeatherAPI:
