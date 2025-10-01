@@ -5,7 +5,16 @@ from fastapi import FastAPI
 
 
 from app.config import settings
+from app.database import db_helper
 from app.routers import router
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # startup
+    yield
+    # Clean up the ML models and release the resources
+    db_helper.dispose()
 
 
 main_app = FastAPI()
