@@ -52,6 +52,7 @@ class Settings(BaseSettings):
     api_prefix: ApiPrefix = ApiPrefix()
     weather_api: WeatherApiSettings
     db: DatabaseConfig
+    redis: RedisClient
 
 
 settings = Settings()
