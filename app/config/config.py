@@ -21,6 +21,14 @@ class WeatherApiSettings(BaseSettings):
     api_key: str
 
 
+class DatabaseConfig(BaseModel):
+    url: str
+    echo: bool = False
+    echo_pool: bool = False
+    pool_size: int = 50
+    max_overflow: int = 10
+
+
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
         env_file=BASE_DIR / ".env.template",
@@ -32,6 +40,7 @@ class Settings(BaseSettings):
     run: RunConfig
     api_prefix: ApiPrefix = ApiPrefix()
     weather_api: WeatherApiSettings
+    db: DatabaseConfig
 
 
 settings = Settings()
