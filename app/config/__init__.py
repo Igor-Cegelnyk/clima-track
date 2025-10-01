@@ -1,5 +1,4 @@
-__all__ = ["settings"]
+__all__ = ["settings", "Logger"]
 
 from .config import settings
-
-
+from .logger import Logger
