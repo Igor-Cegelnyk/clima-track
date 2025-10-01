@@ -35,4 +35,5 @@ class Temperature(Base, IdIntPkMixin):
 
     city: Mapped["City"] = relationship(
         back_populates="temperatures",
+        lazy="selectin",
     )
