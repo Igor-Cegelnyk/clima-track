@@ -40,6 +40,10 @@ class RedisClient(BaseSettings):
         return f"redis://{self.host}:{self.port}/{self.db}"
 
 
+class Token(BaseSettings):
+    key: str
+
+
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
         env_file=BASE_DIR / ".env.template",
@@ -53,6 +57,7 @@ class Settings(BaseSettings):
     weather_api: WeatherApiSettings
     db: DatabaseConfig
     redis: RedisClient
+    token: Token
 
 
 settings = Settings()
