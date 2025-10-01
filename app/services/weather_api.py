@@ -5,6 +5,7 @@ import httpx
 
 from app.config import settings
 from app.models import City
+from app.utils.convert_date import to_tz_datetime
 
 
 class WeatherAPI:
@@ -25,7 +26,7 @@ class WeatherAPI:
 
     async def get_temperature(self, city: City):
         weather = await self.get_weather_info(city_name=city.name)
-        dt = datetime.fromtimestamp(weather["dt"]).astimezone()
+        dt = to_tz_datetime(weather["dt"])
         return {
             "city_id": city.id,
             "temperature": weather["main"]["temp"],
