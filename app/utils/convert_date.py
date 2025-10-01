@@ -22,7 +22,7 @@ def date_str_to_int(date_str: str | None = None) -> int:
     return int(date.today().strftime("%Y%m%d"))
 
 
-def date_int_to_date(date_int: int | None = None) -> str | None:
+def date_int_to_str(date_int: int | None = None) -> str | None:
     """
 
     :param date_int: 20251001
