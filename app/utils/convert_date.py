@@ -18,7 +18,7 @@ def date_str_to_int(date_str: str | None = None) -> int:
     :return: 20251001
     """
     if date_str:
-        return int(datetime.strptime(date_str, "%Y-%d-%m").strftime("%Y%m%d"))
+        return int(datetime.strptime(date_str, "%Y-%m-%d").strftime("%Y%m%d"))
     return int(date.today().strftime("%Y%m%d"))
 
 
@@ -29,7 +29,7 @@ def date_int_to_date(date_int: int | None = None) -> str | None:
     :return: "2025-10-01"
     """
     if date_int:
-        return datetime.strptime(str(date_int), "%Y%m%d").strftime("%Y-%d-%m")
+        return datetime.strptime(str(date_int), "%Y%m%d").strftime("%Y-%m-%d")
     return None
 
 
