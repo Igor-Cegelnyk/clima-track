@@ -10,3 +10,7 @@ build/
 .idea/
 .vscode/
 *.db
+log/
+*.bak
+*.dat
+*.dir

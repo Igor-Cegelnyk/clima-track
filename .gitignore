@@ -3,6 +3,9 @@
 
 ### Python ###
 __pycache__/
+*.bak
+*.dat
+*.dir
 
 # Environments
 .env
@@ -10,3 +13,6 @@ __pycache__/
 
 #DB
 *.db
+
+# log
+log/
