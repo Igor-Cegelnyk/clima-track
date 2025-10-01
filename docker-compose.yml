@@ -1,3 +1,7 @@
+networks:
+  clima:
+
+
 services:
   pg:
     image: postgres:15-alpine
@@ -16,13 +20,67 @@ services:
       interval: 5s
       timeout: 3s
       retries: 3
+    networks:
+      - clima
 
   redis:
     image: redis:7
     volumes:
       - redis_data:/data
+    networks:
+      - clima
+
+  app:
+    &app
+    build:
+      context: .
+      dockerfile: app/Dockerfile
+    container_name: app_container
+    depends_on:
+      pg:
+        condition: service_healthy
+    env_file:
+      - .env.template
+    volumes:
+      - app_data:/app/app/log
+    ports:
+      - "8000:8000"
+    networks:
+      clima:
+
+  celery-worker:
+    <<: *app
+    ports: [ ]
+    container_name: celery_worker_container
+    command: celery-worker
+    volumes:
+      - app_data:/app/app/log
+    networks:
+      clima:
+
+
+  celery-beat:
+    <<: *app
+    command: celery-beat
+    container_name: celery_beat_container
+    ports: [ ]
+    volumes:
+      - app_data:/app/app/log
+    networks:
+      clima:
+
+
+  flower:
+    <<: *app
+    command: flower
+    container_name: celery_flower_container
+    ports:
+      - "5555:5555"
+    networks:
+      clima:
 
 
 volumes:
   postgres_data:
   redis_data:
+  app_data:
