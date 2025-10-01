@@ -16,8 +16,8 @@ class ApiPrefix(BaseModel):
 
 
 class WeatherApiSettings(BaseSettings):
-    city: str = "Kyiv"
-    url: str = "http://api.openweathermap.org/data/2.5/weather"
+    city: str
+    url: str
     api_key: str
 
 
