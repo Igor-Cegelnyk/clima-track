@@ -1,14 +1,22 @@
 from datetime import date, datetime, time
+import pytz
+
+TZ = pytz.timezone("Europe/Kiev")
+
+
+def to_tz_datetime(ts: int) -> datetime:
+    """Converted UNIX timestamp in datetime for timezone Europe/Kiev"""
+    return datetime.fromtimestamp(ts, tz=TZ)
 
 
 def current_date_int() -> int:
     """Python default: YYYYMMDD"""
-    return int(datetime.now().strftime("%Y%m%d"))
+    return int(datetime.now(TZ).strftime("%Y%m%d"))
 
 
 def current_time_int() -> int:
     """Python default: HHMMSS"""
-    return int(datetime.now().strftime("%H%M%S"))
+    return int(datetime.now(TZ).strftime("%H%M%S"))
 
 
 def date_str_to_int(date_str: str | None = None) -> int:
