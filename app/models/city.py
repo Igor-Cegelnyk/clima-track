@@ -1,8 +1,14 @@
+from typing import TYPE_CHECKING
+
 from sqlalchemy import String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.models import Base
 from app.models.mixins import IdIntPkMixin
+
+
+if TYPE_CHECKING:
+    from app.models import Temperature
 
 
 class City(Base, IdIntPkMixin):
@@ -13,4 +19,6 @@ class City(Base, IdIntPkMixin):
         nullable=False,
     )
 
-    temperatures = relationship("temperature", back_populates="city")
+    temperatures: Mapped["Temperature"] = relationship(
+        back_populates="city",
+    )
