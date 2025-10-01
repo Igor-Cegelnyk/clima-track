@@ -15,6 +15,12 @@ class ApiPrefix(BaseModel):
     temperatures: str = "/temperatures"
 
 
+class WeatherApiSettings(BaseSettings):
+    city: str = "Kyiv"
+    url: str = "http://api.openweathermap.org/data/2.5/weather"
+    api_key: str
+
+
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
         env_file=BASE_DIR / ".env.template",
@@ -25,6 +31,7 @@ class Settings(BaseSettings):
 
     run: RunConfig
     api_prefix: ApiPrefix = ApiPrefix()
+    weather_api: WeatherApiSettings
 
 
 settings = Settings()
