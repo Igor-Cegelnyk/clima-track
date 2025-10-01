@@ -17,6 +17,12 @@ services:
       timeout: 3s
       retries: 3
 
+  redis:
+    image: redis:7
+    volumes:
+      - redis_data:/data
+
 
 volumes:
   postgres_data:
+  redis_data:
