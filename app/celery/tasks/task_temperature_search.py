@@ -25,7 +25,7 @@ def run_temperature_search(self):
         }
 
     except Exception as exc:
-        log.info("Помилка: %r", exc)
+        log.info("Failed: %r", exc)
         self.retry(exc=exc)
         return None
 

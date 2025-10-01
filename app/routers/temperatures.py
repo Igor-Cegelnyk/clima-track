@@ -2,6 +2,7 @@ from typing import List, TYPE_CHECKING
 
 from fastapi import APIRouter, Depends
 
+from app.auth.dependencies import verify_token
 from app.config import settings
 from app.repositories import TemperatureRepository
 from app.routers.dependencies import get_temp_repository, validate_day, get_system_city
@@ -23,6 +24,7 @@ router = APIRouter(
     "/",
     summary="Get temperatures by date",
     response_model=List[TemperatureRead],
+    dependencies=[Depends(verify_token)],
 )
 async def get_temperatures(
     day: int = Depends(validate_day),
@@ -37,6 +39,7 @@ async def get_temperatures(
     "/",
     summary="Loading the temperature for the current time",
     response_model=TemperatureRead,
+    dependencies=[Depends(verify_token)],
 )
 async def load_temperatures(
     params: CityRequest,
