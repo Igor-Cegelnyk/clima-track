@@ -64,7 +64,7 @@ APP_CONFIG__WEATHER_API__CITY=Kyiv
 APP_CONFIG__WEATHER_API__URL=http://api.openweathermap.org/data/2.5/weather
 
 # Токен (32 символи)
-APP_CONFIG__TOKEN__KEY=12345678901234567890123456789012
+APP_CONFIG__TOKEN__KEY=a93fbd172c54e6a0d8b4c3e9f7a25d61
 ```
 
 ### 📡 Для ручного завантаження температури
