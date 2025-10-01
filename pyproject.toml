@@ -18,6 +18,9 @@ pydantic-settings = "^2.10.1"
 orjson = "^3.11.3"
 httpx = { version = "^0.28.1", extras = ["http2"] }
 inflect = ">=7.5.0,<8.0.0"
+redis = "^6.4.0"
+celery = "^5.5.3"
+flower = "^2.0.1"
 
 
 [tool.poetry.group.dev.dependencies]
